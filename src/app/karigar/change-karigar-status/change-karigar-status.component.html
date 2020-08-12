@@ -1,0 +1,38 @@
+<div class="gift-box">
+    <div class="zift-hadding">
+      <p>Change Status</p>
+      <div class="close-icon">
+        <button mat-button mat-dialog-close ><i class="material-icons">clear</i></button>
+      </div>
+    </div>
+    
+    <div class="trans pt15">
+      <form name="complaint" (ngSubmit)="f.form.valid && addCompalintStatus(f) " #f="ngForm" novalidate autocomplete="off">
+        <div class="form-area">
+          <div class="slect none-bo">
+            <mat-form-field>
+              <mat-label>Status</mat-label>
+              <mat-select class="complaint.status" placeholder="Status" [(ngModel)] = "complaint.status" #status="ngModel" name="status" required>
+                  <mat-option value ="Verified" class="Verified">Verified</mat-option>
+                  <mat-option value ="Reject" class="Reject">Reject</mat-option>
+                  <mat-option value ="Pending" class="Pending">Pending</mat-option>
+                  <mat-option value ="Suspect" class="Suspect">Suspect</mat-option>
+                </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        
+        <div class="option-field" *ngIf="complaint.status == 'Suspect' || complaint.status == 'Reject'">
+          <div class="control-field">
+            <mat-form-field  class="cs-input">
+              <textarea matInput placeholder="Reason" class="h106" name="reason" [(ngModel)] = "complaint.reason" #reason="ngModel" ></textarea>
+            </mat-form-field>
+          </div>
+        </div>
+        
+        <div class="save mt10" [ngClass]="{loading: savingData}">
+          <button mat-button class="mb0"  [disabled]="savingData" >SAVE</button>
+        </div>
+      </form>
+    </div>
+  </div>

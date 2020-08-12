@@ -1,0 +1,25 @@
+<div class="gift-box">
+    <div class="zift-hadding">
+      <p>Update Nature Problem</p>
+      <div class="close-icon">
+        <button mat-button mat-dialog-close ><i class="material-icons">clear</i></button>
+      </div>
+    </div>
+    
+    <div class="trans">
+      <form name="complaint" (ngSubmit)="f.form.valid && addCompalintStatus(f) " #f="ngForm" novalidate autocomplete="off">
+               
+        <div class="option-field">
+          <div class="control-field">
+            <mat-form-field  class="cs-input">
+              <textarea matInput placeholder="Nature Problem" class="h106" name="nature_problem" [(ngModel)] = "complaint.nature_problem" #nature_problem="ngModel" ></textarea>
+            </mat-form-field>
+          </div>
+        </div>
+        
+        <div class="save mt10" [ngClass]="{loading: savingData}">
+          <button mat-button class="mb0"  [disabled]="savingData" >UPDATE</button>
+        </div>
+      </form>
+    </div>
+  </div>
