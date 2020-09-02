@@ -51,7 +51,7 @@
                                       <div class="control-field">
                                           <mat-form-field class="cs-input">
                                             <mat-label>Distributor {{discount.type}}</mat-label>
-                                              <input matInput placeholder="Distributor {{discount.type}}" maxlength="2" (keypress)="number($event)" name="distributor_discount" [(ngModel)]="discount.distributor_discount" required>
+                                              <input matInput placeholder="Distributor {{discount.type}}" maxlength="5"   decimals="2" name="distributor_discount" [(ngModel)]="discount.distributor_discount" required>
                                           </mat-form-field>  
                                       </div>
                                   </div>
@@ -59,7 +59,7 @@
                                     <div class="control-field">
                                         <mat-form-field class="cs-input">
                                             <mat-label>Dealer {{discount.type}}</mat-label>
-                                            <input matInput placeholder="Dealer {{discount.type}}" maxlength="2" (keypress)="number($event)" name="dealer_discount" [(ngModel)]="discount.dealer_discount" required>
+                                            <input matInput placeholder="Dealer {{discount.type}}" maxlength="5"   decimals="2" name="dealer_discount" [(ngModel)]="discount.dealer_discount" required>
                                         </mat-form-field>  
                                     </div>
                                 </div>
