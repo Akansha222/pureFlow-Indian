@@ -194,7 +194,7 @@
                                 <div class="profile-info">
                                     <div class="img-box">
                                         <div class="name-box point-sec doc-file" >
-                                            <img [src]="getData.document_image" (click)="openDialog( getData.id,'test6')">
+                                            <img *ngIf="getData.document_image" [src]="getData.document_image" (click)="openDialog( getData.id,'test6')">
                                             
                                         </div>
                                     </div>
