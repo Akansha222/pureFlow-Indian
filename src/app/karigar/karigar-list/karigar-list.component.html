@@ -163,7 +163,7 @@
               <td class="w135">{{val.state | titlecase }}</td>
               <td class="w135">{{val.district | titlecase }}</td>
               <td class="w122">{{val.dealer_contact_person | titlecase }}</td>
-              <td class="w120 text-center">{{ConvertToInt(val.balance_point)+ConvertToInt(val.referal_point_balance)}}</td>
+              <td class="w120 text-center">{{ConvertToInt(val.balance_point)}}</td>
               <td class="w135 ">
                 <div class="center">
                   <select class="{{val.status}}"  [name]="'status'+i" placeholder="Status" [(ngModel)]="val.status" (change)="karigarsSatus(i) ">

@@ -32,7 +32,21 @@ export class KarigarDetailComponent implements OnInit {
         
         ngOnInit() {
             this.route.params.subscribe(params => {
-                this.karigar_id = this.db.crypto(params['karigar_id'],false);
+
+                console.log(params);
+
+                console.log((params['karigar_id'].toString()).length);
+
+                if ((params['karigar_id'].toString()).length > 4) {
+
+                    this.karigar_id = this.db.crypto(params['karigar_id'],false);
+
+                } else {
+
+                     this.karigar_id = params['karigar_id'];
+                }
+              
+                console.log(this.karigar_id);
                 if (this.karigar_id) {
                     this.getKarigarDetails();
                     this.getScannedList();
@@ -58,6 +72,11 @@ export class KarigarDetailComponent implements OnInit {
             .subscribe(d => {
                 this.loading_list = false;
                 console.log(d);
+
+                if(d.karigar.profile == 'Array') {
+
+                     d.karigar.profile = '';
+                }
                 this.getData = d.karigar;
                 this.total_points = parseInt(this.getData.balance_point)+parseInt(this.getData.referal_point_balance);
             });
@@ -148,8 +167,15 @@ export class KarigarDetailComponent implements OnInit {
                 this.current_page = d.scanned_coupon.current_page;
                 this.last_page = d.scanned_coupon.last_page;
                 this.scanned_coupon = d.scanned_coupon.data;
+
+                this.coupon_scanned_count = this.getData.reg;
+                for (let index = 0; index < this.scanned_coupon.length; index++) {
+
+                    this.coupon_scanned_count += this.scanned_coupon[index].coupon_value;
+                    
+                }
                 
-                this.coupon_scanned_count = d.scanned_coupon.total;
+                // this.coupon_scanned_count = d.scanned_coupon.total;
                 this.complaint_total = d.complaint_total;
                 
                 
