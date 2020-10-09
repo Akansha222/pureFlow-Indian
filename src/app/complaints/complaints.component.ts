@@ -91,6 +91,8 @@ export class ComplaintsComponent implements OnInit {
       this.last_page = d.karigars.last_page;
       this.total_karigars =d.karigars.total;
       this.karigars = d.karigars.data;
+      console.log(this.karigars);
+      
       
       this.com_all = d.com_all;
       this.com_assign = d.com_assign;
