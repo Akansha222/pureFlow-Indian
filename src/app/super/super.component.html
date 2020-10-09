@@ -37,6 +37,10 @@
                 <th class="w200">Date Created / Created by</th>
                 <th class="w200" >Name</th>
                 <th class="w130" >Mobile</th>
+
+                <th class="w200" >Dealer</th>
+                <th class="w200" >Channel Partner</th>
+
                 <th >Address</th>
                 <th class="w100" >Wallet</th>
                 <th>Eligible For Gifts</th>
@@ -71,6 +75,22 @@
                         <i class="material-icons">search</i>
                       </div>
                 </th>
+
+
+                <th class="w200">
+                  <div class="search-form">
+                    <input type="text" placeholder="search" [(ngModel)]="filter.dealer_contact_person"  (keyup.enter)="current_page = 1;getSuperList()">
+                    <i class="material-icons">search</i>
+                  </div>
+                </th>
+                <th class="w200">
+                  <div class="search-form">
+                    <input type="text" placeholder="search" [(ngModel)]="filter.chnlprtnr"  (keyup.enter)="current_page = 1;getSuperList()">
+                    <i class="material-icons">search</i>
+                  </div>
+                </th>
+
+
                 <th>
                     <div class="search-form">
                         <input type="text" placeholder="search" [(ngModel)]="filter.address"  (keyup.enter)="current_page = 1;getSuperList()">
@@ -99,6 +119,11 @@
               <td class="w200"><ng-container *ngIf="val.date_created  != '0000-00-00 00:00:00' "> {{val.date_created | date: 'dd MMM yyyy'}}</ng-container> / {{val.created_name}}</td>
               <td class="w200"><a class="blue" routerLink="/karigar-detail/{{val.id | crypt}}" routerLinkActive="active">{{val.first_name  | titlecase }}</a></td>
               <td class="w130 text-center">{{val.mobile_no}}</td>
+
+              <td class="w200 text-center">{{val.dealer_contact_person}}</td>
+              <td class="w200 text-center">{{val.chnlprtnr}}</td>
+
+
               <td>{{val.address | titlecase}} {{val.city | titlecase}} {{val.district | titlecase}} {{val.state | titlecase}} {{val.pincode}}</td>
               <td class="w100 text-center"><span class="back-bg">{{val.balance_point}}</span></td>
               <td>
@@ -147,4 +172,3 @@
     
     
   </div>
-  

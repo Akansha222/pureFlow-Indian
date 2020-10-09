@@ -9,11 +9,12 @@ import {DomSanitizer} from '@angular/platform-browser';
   // styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  constructor(public ses: SessionStorage, public db: DatabaseService, public sanitizer: DomSanitizer) { }
   form: any = {};
   loading = false;
   DDVideoUrl: string;
   sendingData = false;
-  constructor(public ses: SessionStorage, public db: DatabaseService, public sanitizer: DomSanitizer) { }
+  banner: any = [];
 
   ngOnInit() {
     this.loginBanners();
@@ -23,8 +24,6 @@ export class LoginComponent implements OnInit {
     this.form.mode = 'Portal';
     this.ses.setSession(this.form);
   }
-  
-  banner:any = [];
   loginBanners() {
     this.db.login_get_rqst( '', 'app_karigar/banners' )
     .subscribe(d => {

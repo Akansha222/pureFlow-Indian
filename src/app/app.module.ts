@@ -15,7 +15,7 @@ import { ReferralMasterComponent } from './master/referral-master/referral-maste
 
 import { NgxHmCarouselModule } from 'ngx-hm-carousel';
 import 'hammerjs';
-import {BrowserModule} from '@angular/platform-browser';
+
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -83,52 +83,55 @@ import { RedeemRequestListComponent } from './redeem-request/redeem-request-list
 import { RedeemRequestDetailComponent } from './redeem-request/redeem-request-detail/redeem-request-detail.component';
 import { ShippedDetailModelComponent } from './redeem-request/shipped-detail-model/shipped-detail-model.component';
 import { ChangeStatusRedeemComponent } from './redeem-request/change-status-redeem/change-status-redeem.component';
+import {BrowserModule} from "@angular/platform-browser";
+import { PopupComponent } from './popup/popup.component';
 
 FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
 
 const routes: Routes = [
-  {path: '', component:LoginComponent , canActivate: [AuthGuardLog] },
-  {path: 'dashboard', component:DashboardComponent  , canActivate: [AuthGuard] },
+  {path: '', component: LoginComponent , canActivate: [AuthGuardLog] },
+  {path: 'dashboard', component: DashboardComponent  , canActivate: [AuthGuard] },
   {path: 'offer-list', component: OfferListComponent  , canActivate: [AuthGuard] },
-  {path: 'add-offer', component:AddOfferComponent , canActivate: [AuthGuard] },
-  {path: 'edit-offer/:offer_id', component:EditOfferComponent , canActivate: [AuthGuard] },
-  {path: 'offer-detail/:offer_id', component:OfferDetailComponent , canActivate: [AuthGuard] },
-  {path: 'gift-list', component:GiftListComponent , canActivate: [AuthGuard] },
-  {path: 'gift-detail/:gift_id', component:GiftDetailComponent , canActivate: [AuthGuard] },
-  {path: 'productcategory-list', component:ProductcategoryListComponent , canActivate: [AuthGuard] },
-  {path: 'products-list', component:ProductsListComponent , canActivate: [AuthGuard] },
-  {path: 'main-catefory-list', component:MainCategoryComponent , canActivate: [AuthGuard] },
-  {path: 'registration-loyality', component:RegistrationLoyalityComponent , canActivate: [AuthGuard] },
-  {path: 'video-list', component:VideoComponent , canActivate: [AuthGuard] },
-  {path: 'referral-master', component:ReferralMasterComponent , canActivate: [AuthGuard] },
-  {path: 'special-dis', component:SpecialDiscountComponent , canActivate: [AuthGuard] },
+  {path: 'add-offer', component: AddOfferComponent , canActivate: [AuthGuard] },
+  {path: 'edit-offer/:offer_id', component: EditOfferComponent , canActivate: [AuthGuard] },
+  {path: 'offer-detail/:offer_id', component: OfferDetailComponent , canActivate: [AuthGuard] },
+  {path: 'gift-list', component: GiftListComponent , canActivate: [AuthGuard] },
+  {path: 'gift-detail/:gift_id', component: GiftDetailComponent , canActivate: [AuthGuard] },
+  {path: 'productcategory-list', component: ProductcategoryListComponent , canActivate: [AuthGuard] },
+  {path: 'products-list', component: ProductsListComponent , canActivate: [AuthGuard] },
+  {path: 'main-catefory-list', component: MainCategoryComponent , canActivate: [AuthGuard] },
+  {path: 'registration-loyality', component: RegistrationLoyalityComponent , canActivate: [AuthGuard] },
+  {path: 'video-list', component: VideoComponent , canActivate: [AuthGuard] },
+  {path: 'referral-master', component: ReferralMasterComponent , canActivate: [AuthGuard] },
+  {path: 'special-dis', component: SpecialDiscountComponent , canActivate: [AuthGuard] },
 
-  {path: 'karigar-list', component:KarigarListComponent , canActivate: [AuthGuard] },
-  {path: 'karigar-add', component:KarigarAddComponent , canActivate: [AuthGuard] },
-  {path: 'karigar-add/:karigar_id', component:KarigarAddComponent , canActivate: [AuthGuard] },
-  {path: 'karigar-detail/:karigar_id',  component:KarigarDetailComponent , canActivate: [AuthGuard] },
-  {path: 'coupon-code-list',  component:CouponCodeListComponent , canActivate: [AuthGuard] },
+  {path: 'karigar-list', component: KarigarListComponent , canActivate: [AuthGuard] },
+  {path: 'karigar-add', component: KarigarAddComponent , canActivate: [AuthGuard] },
+  {path: 'karigar-add/:karigar_id', component: KarigarAddComponent , canActivate: [AuthGuard] },
+  {path: 'karigar-detail/:karigar_id',  component: KarigarDetailComponent , canActivate: [AuthGuard] },
+  {path: 'coupon-code-list',  component: CouponCodeListComponent , canActivate: [AuthGuard] },
   {path: 'super-list', component: SuperComponent , canActivate: [AuthGuard] },
   {path: 'complaints-list/:type', component: ComplaintsComponent , canActivate: [AuthGuard] },
   {path: 'customer-list', component: CustomerComponent , canActivate: [AuthGuard] },
-  {path: 'customer-detail/:customer_id',  component:CustomerDetailComponent , canActivate: [AuthGuard] },
-  {path: 'complaints-add/main/:type', component:ComplaintsAddComponent , canActivate: [AuthGuard] },
-  {path: 'complaints-add/:complaints_id', component:ComplaintsAddComponent , canActivate: [AuthGuard] },
-  {path: 'complaints-detail/:complaints_id',  component:ComplaintsDetailComponent , canActivate: [AuthGuard] },
-  {path: 'login-banner-list', component:LoginBannerComponent , canActivate: [AuthGuard] },
-  {path: 'coupon-upload', component:CouponCodeUploadComponent , canActivate: [AuthGuard] },
-  {path: 'customer-edit/:customer_id', component:CustomerEditComponent , canActivate: [AuthGuard] },
+  {path: 'customer-detail/:customer_id',  component: CustomerDetailComponent , canActivate: [AuthGuard] },
+  {path: 'complaints-add/main/:type', component: ComplaintsAddComponent , canActivate: [AuthGuard] },
+  {path: 'complaints-add/:complaints_id', component: ComplaintsAddComponent , canActivate: [AuthGuard] },
+  {path: 'complaints-detail/:complaints_id',  component: ComplaintsDetailComponent , canActivate: [AuthGuard] },
+  {path: 'login-banner-list', component: LoginBannerComponent , canActivate: [AuthGuard] },
+  {path: 'coupon-upload', component: CouponCodeUploadComponent , canActivate: [AuthGuard] },
+  {path: 'customer-edit/:customer_id', component: CustomerEditComponent , canActivate: [AuthGuard] },
 
+  {path: 'popup', component: PopupComponent, canActivate: [AuthGuard]},
 
-  {path: 'redeem-request-list', component:RedeemRequestListComponent , canActivate: [AuthGuard] },
-  {path: 'redeem-request-detail/:redeem_id', component:RedeemRequestDetailComponent , canActivate: [AuthGuard] },
+  {path: 'redeem-request-list', component: RedeemRequestListComponent , canActivate: [AuthGuard] },
+  {path: 'redeem-request-detail/:redeem_id', component: RedeemRequestDetailComponent , canActivate: [AuthGuard] },
 
-  {path: 'slider',  component:SliderComponent},
+  {path: 'slider',  component: SliderComponent},
   { path: '**', redirectTo: ''},
-  
-  
-  
-  
+
+
+
+
 ];
 
 
@@ -193,6 +196,7 @@ const routes: Routes = [
     CategoryModelComponent,
     ChangePriceModelComponent,
     SpecialDiscountComponent,
+    PopupComponent,
    
   ],
   imports: [
@@ -221,9 +225,7 @@ const routes: Routes = [
     AuthGuardLog,
     DatabaseService
   ],
-  
   entryComponents: [
-    
     GiftRedeemModuleComponent,
     TransferCodeComponent,
     ChangeStatusComponent,
