@@ -11,10 +11,14 @@
 
     @Injectable({ providedIn: 'root' })
     export class DatabaseService implements OnInit {
-        
-     
+
+        // dbUrl="http://app.gravitybath.com/crm/api/index.php/";
+
         // myurl = 'http://localhost/github_d/pearl_api/gravity/dd_api/';
         myurl = 'http://app.gravitybath.com/dd_api/';
+
+        myurl1 = 'http://app.gravitybath.com/crm/api/index.php/';
+
         // myurl = 'http://localhost/gravity_api/';
 
         can_active = '';
@@ -54,6 +58,14 @@
             }
 
 
+            fetchData(data:any,fn:any)
+            {
+                this.header.append('Content-Type','application/json');
+                console.log(this.myurl1+fn);
+                return this.http.post(this.myurl1+fn,JSON.stringify(data),{ headers:this.header })
+            }
+
+
    
             
 
@@ -61,20 +73,21 @@
                     
 
             post_rqst(request_data: any, fn: any):any {
-                if( !this.chek_seission() )
-                return false;
+                if (!this.chek_seission())
+                    return false;
                 // this.noificaton();
                 let headers = new HttpHeaders().set('Content-Type', 'application/json');
                 headers = headers.set('Token', 'Bearer ' + this.datauser.token);
-                return this.http.post(this.myurl + fn, JSON.stringify(request_data), {headers: headers}).
-                pipe(
-                    retry(3), 
+                return this.http.post(this.myurl + fn, JSON.stringify(request_data), {headers: headers}).pipe(
+                    retry(3),
                     // retry a failed request up to 3 times
                     // catchError(this.handleError) // then handle the error
-                    );
-                }
-                
-                get_rqst(request_data: any, fn: any):any {
+                );
+            }
+
+
+
+        get_rqst(request_data: any, fn: any):any {
                     if( !this.chek_seission() )
                     return false;
                     // this.noificaton();
@@ -253,13 +266,40 @@
                               event.preventDefault();
                             }
                           }
-    
-                         
-                          
-                          
 
 
-                          
+
+
+
+        // tslint:disable-next-line:variable-name
+        post_rqst1(request_data1: any, fn: any):any {
+            if( !this.chek_seission() )
+                return false;
+            // this.noificaton();
+            let headers = new HttpHeaders().set('Content-Type', 'application/json');
+            headers = headers.set('Token', 'Bearer ' + this.datauser.token);
+            return this.http.post(this.myurl1 + fn, JSON.stringify(request_data1), { headers}).
+            pipe(
+                retry(3),
+                // retry a failed request up to 3 times
+                // catchError(this.handleError) // then handle the error
+            );
+        }
+        get_rqst1(request_data1: any, fn: any):any {
+            if( !this.chek_seission() )
+                return false;
+            // this.noificaton();
+
+            let headers = new HttpHeaders().set('Content-Type', 'application/json');
+            headers = headers.set('Token', 'Bearer ' + this.datauser.token);
+            return this.http.get(this.myurl1 + fn, {headers: headers}).
+            pipe(
+                retry(3),
+                // retry a failed request up to 3 times
+                // catchError(this.handleError ) ,
+                // then handle the error
+            );
+        }
                     
                     
                 }
@@ -267,4 +307,3 @@
 
 
 
-                

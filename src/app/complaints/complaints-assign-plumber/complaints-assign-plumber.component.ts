@@ -50,18 +50,19 @@ export class ComplaintsAssignPlumberComponent implements OnInit {
       });
     }
 
-   
+
     addCompalintStatus(form:any)
     {
       this.savingData = true;
       this.complaint.created_by = this.db.datauser.id;
 
-      this.db.post_rqst( { 'status' : this.complaint ,'id': this.data.id }, 'karigar/updateAssignPlumber')
+      this.db.post_rqst( { 'status' : this.complaint ,'id': this.data.id, 'mobile': this.selectEvent }, 'karigar/updateAssignPlumber')
       .subscribe( d => {
         this.savingData = false;
         this.dialog.success( 'Status successfully Change');
         this.dialogRef.close(true);
         //console.log( d );
+        console.log(form.mobile);
       });
     }
 
@@ -167,4 +168,3 @@ onFocused(e){
 
 
   }
-  

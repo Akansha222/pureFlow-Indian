@@ -154,7 +154,7 @@ export class KarigarAddComponent implements OnInit {
                     return;
                 }
                 this.router.navigate(['karigar-list']);
-                this.dialog.success( 'Karigar has been successfully added');
+                this.dialog.success( 'plumber has been successfully added');
             });
         }
         sales_users:any=[];

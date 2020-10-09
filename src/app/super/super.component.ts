@@ -59,15 +59,16 @@ export class SuperComponent implements OnInit {
       this.filter.start_date = this.filter.start_date  ? this.db.pickerFormat(this.filter.start_date) : '';
       this.filter.end_date = this.filter.end_date  ? this.db.pickerFormat(this.filter.end_date) : '';
 
-      if( this.filter.date   || this.filter.first_name  || this.filter.mobile_no  || this.filter.search || this.filter.address )this.filtering = true;
+      // tslint:disable-next-line:max-line-length
+      if( this.filter.date   || this.filter.first_name  ||this.filter.dealer || this.filter.chnprtnr || this.filter.mobile_no  || this.filter.search || this.filter.address )this.filtering = true;
        this.filter.mode = 0;
-       
+
 
       this.db.post_rqst(  {  'filter': this.filter , 'login':this.db.datauser}, 'karigar/supperKarigarList?page=' + this.current_page )
       .subscribe( d => {
         this.loading_list = false;
         //console.log(d);
-        
+
         this.karigars = d.karigars.data;
         this.karigar_all = d.karigar_all;
         // this.total_gift = d.gift.total;
@@ -87,4 +88,3 @@ export class SuperComponent implements OnInit {
    
    
     }
-    

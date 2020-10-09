@@ -9,7 +9,7 @@
     <div class="trans">
       <form name="offer" (ngSubmit)="f.form.valid && addoffer(f) " #f="ngForm" novalidate autocomplete="off">
         <div class="form-area">
-          <div class="slect none-bo">
+          <div class="slect none-bo mr0">
             <mat-form-field>
               <mat-label>Status</mat-label>
               <mat-select class="offer.gift_status" placeholder="Status" [(ngModel)] = "offer.gift_status" #gift_status="ngModel" name="gift_status" required>

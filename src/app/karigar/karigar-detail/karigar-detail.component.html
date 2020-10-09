@@ -41,8 +41,8 @@
                                 <!-- (click)="balanceModel(getData.id)" -->
                                 <div class="name-box point-sec" >
                                     <div class="points ">
-                                        <a  >{{total_points}}</a>
-                                        <h4>Point</h4>
+                                        <a  >{{total_points + getData.reg_points}}</a>
+                                        <h4>Balance Point</h4>
                                     </div>
                                 </div>
                             </div>
@@ -54,7 +54,8 @@
                                         <li>
                                             <figure>
                                                 <div class="left-img border">
-                                                    <img [src]="getData.profile" (click)="openDialog( getData.id,'test5')" >
+                                                    <img  *ngIf="getData.profile" [src]="getData.profile" (click)="openDialog( getData.id,'test5')" >
+                                                    <img *ngIf="getData.profile == '' " class="lnr lnr-user"  src="assets/user.png" >
                                                 </div>
                                                 <div class="right-cont">
                                                     <p>Name</p>
@@ -92,7 +93,7 @@
                                             <p>Status</p>
                                             <div class="center">
                                                 <select class="{{getData.status}}" name="status" placeholder="Status" [(ngModel)]="getData.status" (change)="karigarsSatus() ">
-                                                    <option class="Verified" value="Verified">Verified</option>
+                                                    <option class="Verified"   value="Verified">Verified</option>
                                                     <option class="Reject" value="Reject">Reject</option>
                                                     <option class="Pending" value="Pending">Pending</option>
                                                     <option class="Suspect" value="Suspect">Suspect</option>
@@ -165,7 +166,12 @@
                                         </div>
                                     </figure>
                                 </li>
-                                
+
+
+
+
+
+
                                 <li *ngIf="getData.referral_code">
                                     <figure>
                                         <div class="left-img">
@@ -177,6 +183,29 @@
                                         </div>
                                     </figure>
                                 </li>
+
+
+
+
+<!--                                <div class="profile-info">-->
+<!--                                    <ul class="wp100">-->
+                                        <li class="wp100 mr0 mt15">
+                                            <div class="margin">
+                                                <p> Channel Partner</p>
+                                                <span>{{getData.distributor_name}}</span>
+                                            </div>
+                                        </li>
+<!--                                    </ul>-->
+
+<!--                                </div>-->
+
+
+
+
+
+
+
+
                             </ul>
                         </div>
                     </div> 
@@ -194,9 +223,14 @@
                                 <div class="profile-info">
                                     <div class="img-box">
                                         <div class="name-box point-sec doc-file" >
-                                            <img *ngIf="getData.document_image" [src]="getData.document_image" (click)="openDialog( getData.id,'test6')">
-                                            
-                                        </div>
+                                            <img *ngIf="getData.document_image"  [src]="getData.document_image"  (click)="openDialog( getData.id,'test6')">
+                                            <!-- <img *ngIf="getData.document_image == '' "  [src]="assets/abacus-icon.png" > -->
+<!--  -->
+             
+<img *ngIf="getData.document_image == '' " src="assets/aadhar-card.png" >
+
+
+</div>
                                     </div>
                                     <ul class="wp100">
                                         <li class="wp100 mr0">
@@ -246,7 +280,7 @@
                                             </li>
                                         </ul>
                                     </div>
-                                    
+
                                     <div class="profile-info">
                                         <ul class="wp100">
                                             <li class="wp100 mr0 mt15">
@@ -257,6 +291,16 @@
                                                 </div>
                                             </li>
                                         </ul>
+
+
+
+
+
+
+
+
+
+
                                     </div>
                                 </div>
                                 
@@ -276,8 +320,8 @@
                             <ul>
                                 <li (click)="mode='1'; getScannedList()" [ngClass]="{'active': mode == '1'}" >
                                     <a>
-                                        <p>POINT WALLET</p>
-                                        <span>{{coupon_scanned_count}}</span>
+                                        <p>Total Points Earned</p>
+                                        <span>{{total_points+ getData.reg_points}}</span>
                                     </a>
                                 </li>
                                 <li (click)="mode='2'; getComplaintsList()" [ngClass]="{'active': mode == '2'}" >
@@ -286,6 +330,45 @@
                                         <span>{{complaint_total}}</span>
                                     </a>
                                 </li>
+
+
+                                <li (click)="mode='3'; getScannedList1()" [ngClass]="{'active': mode == '3'}">
+                                    <a>
+                                        <p>Redeem Points</p>
+
+<!--                                        <span>{{getData.karigar_gift[0].total_gift_points}}</span>-->
+
+                                        <span>{{total_gift_points}}</span>
+
+                                    </a>
+                                </li>
+
+
+<!--                                <li (click)="mode='2'; getComplaintsList()" [ngClass]="{'active': mode == '2'}" >-->
+<!--                                    <a>-->
+<!--                                        <p>redeem</p>-->
+<!--                                        <span>{{complaint_total}}</span>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+
+
+<!--                                <li [ngClass]="{'active': mode == '2'}" >-->
+<!--                                    <a>-->
+<!--                                        <p>Total Points</p>-->
+<!--                                        <span>{{total_points}}</span>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+
+
+<!--                                <div class="points ">-->
+<!--                                    <a  >{{total_points}}</a>-->
+<!--                                    <p>Total Points</p>-->
+<!--                                    <span>{{total_points}}</span>-->
+
+<!--                                    <h4>Total Point</h4>-->
+<!--                                </div>-->
+
+
                             </ul>
                             
                             
@@ -300,8 +383,28 @@
                                 <li><button mat-button class="right-btn" (click) = 'redirect_next1()'><i class="material-icons">keyboard_arrow_right</i></button></li>
                             </ul>
                         </div>
-                    </div>		
-                    
+                    </div>
+
+
+
+
+
+                    <div class="dobale" *ngIf="mode == '3'" >
+                        <div class="top-pagination" >
+                            <ul>
+                                <li><p >Pages {{ current_page }} of {{ last_page }}</p></li>
+                                <li><button mat-button class="left-btn" (click) = 'redirect_previous3()'><i class="material-icons">keyboard_arrow_left</i></button></li>
+                                <li><input type="text" placeholder="GO TO" [(ngModel)]="current_page"  (keyup.enter)="getScannedList1()"></li>
+                                <li><button mat-button class="right-btn" (click) = 'redirect_next3()'><i class="material-icons">keyboard_arrow_right</i></button></li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+
+
+
+
                     <div class="dobale" *ngIf="mode == '2'" >
                         <div class="top-pagination" >
                             <ul>
@@ -518,7 +621,118 @@
                     </div>
                     
                 </div>
-                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <div class="css-table" *ngIf="mode == '3'">
+                    <div class="sticky-header">
+                        <div class="header">
+                            <table>
+                                <tr>
+                                    <th class="w200">Date Created</th>
+                                    <th class="w200">Gift Point</th>
+                                    <th class="w130">Gift Status</th>
+
+                                </tr>
+
+                            </table>
+                        </div>
+
+                    </div>
+
+                    <div class="table-container" >
+                        <div class="table-body">
+                            <table>
+                                <tr *ngFor="let val of all_gifts; let i = index">
+                                    <td class="w500"><ng-container *ngIf="val.date_created  != '0000-00-00 00:00:00' "> {{val.date_created | date: 'dd MMM yyyy'}} / {{val.created_name}} </ng-container> </td>
+                                    <td class="w900">{{val.gift_points}}</td>
+                                    <td class="130">{{val.gift_status}}</td>
+
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             </div>
             
             <div class="date-not" *ngIf="mode == '1' && !loading_list && !scanned_coupon.length && coupon_scanned_count">
@@ -531,8 +745,55 @@
                 <div class="no-img">
                     <img src="assets/not-available.jpg"> 
                 </div>
-                
-            </div>	
+
+
+
+
+
+
+
+
+
+
+
+
+                <div class="date-not" *ngIf="mode == '1' && !loading_list && !scanned_coupon.length && coupon_scanned_count">
+                    <div class="no-img">
+                        <img src="assets/result-not-found.png">
+                    </div>
+                </div>
+
+                <div class="date-not"  *ngIf="mode == '1' && !loading_list && !coupon_scanned_count ">
+                    <div class="no-img">
+                        <img src="assets/not-available.jpg">
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </div>
             
             
             <div class="date-not" *ngIf="mode == '2' && !loading_list && !complaint.length && complaint_total">

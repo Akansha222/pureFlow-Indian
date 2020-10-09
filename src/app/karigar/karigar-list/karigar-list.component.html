@@ -56,6 +56,8 @@
         <div class="master-btn pr30">
           <button mat-button routerLink="/karigar-add"  routerLinkActive="active" >ADD NEW</button>
         </div>
+
+
         <p (click)="getKarigarList()"><i class="material-icons">refresh</i> Refresh</p>
         <ul *ngIf="(filter.status == '' && karigar_all ) || (filter.status == 'Pending' && karigar_pending ) || (filter.status == 'Verified' && karigar_verified ) || (filter.status == 'Reject' && karigar_reject ) || (filter.status == 'Suspect' && karigar_suspect )  ">
           <li><p (click)="filter={};filter.status='';getKarigarList()">Reset Filter</p></li>
@@ -80,6 +82,9 @@
               <th class="w135">State</th>
               <th class="w135">District</th>
               <th class="w122">Dealer</th>
+
+              <th class="w135">Channel Partner</th>
+
               <th class="w120 text-center">Wallet</th>
               <th class="w135">Status</th>
               <th class="w135">Complaint Status</th>
@@ -137,7 +142,14 @@
                   <i class="material-icons">search</i>
                 </div>
               </th>
-              <th class="w120"></th>
+
+              <th class="w122">
+                <div class="search-form">
+                  <input type="text" placeholder="Channel Partner" [(ngModel)]="filter.chnlprtnr"  (keyup.enter)="current_page = 1;getKarigarList()">
+                  <i class="material-icons">search</i>
+                </div>
+              </th>
+         <th class="w120"></th>
               <th class="w135">
                 <th class="w135">
                 </th>
@@ -145,12 +157,8 @@
             </table>
           </div>
         </div>
-        
-        
       </div>
     </div>   
-    
-    
     <div class="css-table" *ngIf="karigars.length">
       <div class="table-container">
         <div class="table-body">
@@ -163,17 +171,71 @@
               <td class="w135">{{val.state | titlecase }}</td>
               <td class="w135">{{val.district | titlecase }}</td>
               <td class="w122">{{val.dealer_contact_person | titlecase }}</td>
-              <td class="w120 text-center">{{ConvertToInt(val.balance_point)}}</td>
+
+              <td class="w122">{{val.distributor_name | titlecase }}</td>
+
+              <td class="w120 text-center">{{ConvertToInt(val.balance_point + val.reg_points)}}</td>
               <td class="w135 ">
                 <div class="center">
                   <select class="{{val.status}}"  [name]="'status'+i" placeholder="Status" [(ngModel)]="val.status" (change)="karigarsSatus(i) ">
-                    <option class="Verified" value="Verified">Verified</option>
+
+<!--                    <button mat-raised-button color="accent"  (click)="addStock()">Convert Lead</button>-->
+
+
+                    <option class="Verified"  (click)="addStock()"  value="Verified">Verified</option>
                     <option class="Reject" value="Reject">Reject</option>
                     <option class="Pending" value="Pending">Pending</option>
                     <option class="Suspect" value="Suspect">Suspect</option>
-                  </select> 
+                  </select>
+
+
+
                 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
               </td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
               <td class="w135 ">
                 <div class="center">
                   <select class="{{val.complaint_status}}"  [name]="'complaint_status'+i" placeholder="Complaint Status" [(ngModel)]="val.complaint_status" (change)="karigarsComplaintSatus(i) ">
@@ -219,4 +281,22 @@
       </div>
       
     </div>
-    
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
