@@ -70,7 +70,7 @@ export class KarigarDetailComponent implements OnInit {
 
                 console.log((params.karigar_id.toString()).length);
 
-                if ((params.karigar_id.toString()).length > 4) {
+                if ((params.karigar_id.toString()).length > 3) {
 
                     this.karigar_id = this.db.crypto(params.karigar_id, false);
 
@@ -108,6 +108,8 @@ export class KarigarDetailComponent implements OnInit {
                      d.karigar.profile = '';
                 }
                 this.getData = d.karigar;
+                console.log(this.getData);
+                
                 this.total_points = parseInt(this.getData.balance_point) + parseInt(this.getData.referal_point_balance);
             });
         }
