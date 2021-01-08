@@ -235,14 +235,14 @@
                 <table> 
                     <tr *ngFor="let val of reedam; let i = index">
                         <td class="w30">{{ ( (current_page - 1 ) * 20 ) + ( i+1 ) }}</td>
-                        <td class="w200"><ng-container *ngIf="val.date_created  != '0000-00-00 00:00:00' "> {{val.date_created | date: 'dd MMM yyyy'}}/ </ng-container><a class="blue" routerLink="/karigar-detail/{{val.karigar_id}}" routerLinkActive="active">{{val.first_name}} {{val.last_name}}</a></td>
+                        <td class="w200"><ng-container *ngIf="val.date_created  != '0000-00-00 00:00:00' "> {{val.date_created | date: 'dd MMM yyyy'}}/ </ng-container><a class="blue" routerLink="/karigar-detail/{{val.karigar_id | crypt }}" routerLinkActive="active">{{val.first_name}} {{val.last_name}}</a></td>
                         <td class="w100"> REQ# {{val.id }}</td>
                         <td class="w80">{{val.gift_points}}</td>
                         <td class="w100">{{val.mobile_no}}</td>
                         <td class="w100 bg-change {{val.karigar_status}}">{{val.karigar_status}}</td>
                         <!-- <td class="w130 ">{{val.sales_name}}</td> -->
                         <td class="w130 ">{{val.gift_title}}</td>
-                        <td ><a  routerLink="/offer-detail"  routerLink="/offer-detail/{{val.offer_id}}" class="blue">{{val.title}} #{{val.offer_code}}</a> -{{val.end_date | date: 'dd MMM yyyy'}}</td>
+                        <td ><a  routerLink="/offer-detail/{{val.offer_id | crypt}}" class="blue">{{val.title}} #{{val.offer_code}}</a> -{{val.end_date | date: 'dd MMM yyyy'}}</td>
                         <td class="w85  {{val.gift_status}}" >{{val.gift_status}}</td>
                         <td class="w150 {{val.receive_status}}">
                             
