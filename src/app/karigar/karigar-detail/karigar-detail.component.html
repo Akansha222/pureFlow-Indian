@@ -41,7 +41,7 @@
                                 <!-- (click)="balanceModel(getData.id)" -->
                                 <div class="name-box point-sec" >
                                     <div class="points ">
-                                        <a  >{{total_points + getData.reg_points}}</a>
+                                        <a  >{{total_points }}</a>
                                         <h4>Balance Point</h4>
                                     </div>
                                 </div>
@@ -321,7 +321,7 @@
                                 <li (click)="mode='1'; getScannedList()" [ngClass]="{'active': mode == '1'}" >
                                     <a>
                                         <p>Total Points Earned</p>
-                                        <span>{{total_points+ getData.reg_points}}</span>
+                                        <span>{{total_points}}</span>
                                     </a>
                                 </li>
                                 <li (click)="mode='2'; getComplaintsList()" [ngClass]="{'active': mode == '2'}" >
