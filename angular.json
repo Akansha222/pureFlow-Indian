@@ -136,5 +136,8 @@
       }
     }
   },
-  "defaultProject": "my-desing"
+  "defaultProject": "my-desing",
+  "cli": {
+    "analytics": "ad217144-e80c-40fd-8dce-5ce8d14c3346"
+  }
 }

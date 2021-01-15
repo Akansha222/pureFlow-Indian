@@ -29,12 +29,19 @@ export class OfferDetailComponent implements OnInit {
     logs:any=[];
     
     
-    constructor(public db: DatabaseService, private route: ActivatedRoute, private router: Router, public ses: SessionStorage,
-        public dialog: DialogComponent, public alrt:MatDialog ) {}
+    constructor(public db: DatabaseService, public route: ActivatedRoute, private router: Router, public ses: SessionStorage,
+        public dialog: DialogComponent, public alrt:MatDialog ) {
+            console.log(this.route);
+            console.log(this.route.params['_value']['offer_id']);
+        }
         
         ngOnInit() {
             this.route.params.subscribe(params => {
+                console.log(params);
+                
                 this.offer_id = this.db.crypto(params['offer_id'],false);
+                console.warn(this.offer_id);
+                
                 this.getOfferDetails();
                 this.getParticipantsList();
                 this.getStateList();
