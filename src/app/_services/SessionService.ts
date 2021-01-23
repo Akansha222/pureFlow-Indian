@@ -54,7 +54,9 @@ export class SessionStorage implements OnInit {
                     if(   this.users.access_level == 1  ){
                         if(this.users.id==1)
                         {
-                            home_page = '/dashboard';
+                            // home_page = '/dashboard';
+                            home_page = '/offer-list';
+
                         }
                         else
                         {

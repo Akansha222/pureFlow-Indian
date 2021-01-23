@@ -11,42 +11,42 @@
                 <li matRipple style="background: #e65100;" (click)="goto_offerPage()">
                     <div class="counter-value">
                         <div class="counter-icon"><img src="assets/pyment_due.svg"></div>
-                        <p>{{store.offer}}</p>
+                        <p>{{store?store.offer:''}}</p>
                     </div>
                     <div class="counter-name">Offers</div>
                 </li>
                 <li matRipple style="background: #2e7d32;" (click)="goto_offergiftPage()">
                     <div class="counter-value">
                         <div class="counter-icon"><img src="assets/pop&gift.svg"></div>
-                        <p>{{store.gift}}</p>
+                        <p>{{store?store.gift:''}}</p>
                     </div>
                     <div class="counter-name">Gift Gallery</div>
                 </li>
                 <li matRipple style="background: #3949ab;" (click)="goto_plumberPage()">
                     <div class="counter-value">
                         <div class="counter-icon"><img src="assets/pending.svg"></div>
-                        <p>{{store.plumber}}</p>
+                        <p>{{store?store.plumber:''}}</p>
                     </div>
                     <div class="counter-name">Plumber</div>
                 </li>
                 <li matRipple style="background: #f50057;" (click)="goto_balance_coupon_page()">
                     <div class="counter-value">
                         <div class="counter-icon"><img src="assets/marketing_exp.svg"></div>
-                        <p>{{store.balance}}</p>
+                        <p>{{store?store.balance:''}}</p>
                     </div>
                     <div class="counter-name">Balance Coupon Value</div>
                 </li>
                 <li matRipple style="background: #00b1ff;" (click)="goto_customerPage()">
                     <div class="counter-value">
                         <div class="counter-icon"><img src="assets/customer.png"></div>
-                        <p>{{store.customer}}</p>
+                        <p>{{store?store.customer:''}}</p>
                     </div>
                     <div class="counter-name">Customer</div>
                 </li>
                 <li matRipple style="background: #8a2000;" (click)="goto_productPage()">
                     <div class="counter-value">
                         <div class="counter-icon"><img src="assets/product.svg"></div>
-                        <p>{{store.product}}</p>
+                        <p>{{store?store.product:''}}</p>
                     </div>
                     <div class="counter-name">Product</div>
                 </li>
@@ -54,7 +54,7 @@
                 <li matRipple style="background:#9b2450;" (click)="goto_complaintPage()">
                     <div class="counter-value">
                         <div class="counter-icon"><img src="assets/complaint.png"></div>
-                        <p>{{store.complaint}}</p>
+                        <p>{{store?store.complaint:''}}</p>
                     </div>
                     <div class="counter-name">Complaints</div>
                 </li>
@@ -62,7 +62,7 @@
         </div>
         
         <div class="row mb15">
-            <div class="col s4 pl0 pr7">
+            <div class="col s4 pl0 pr7" *ngIf="data_Source">
                 <div class="pie-chart">
                     <div class="chart-header">
                         <p>State Wise Plumber</p>
@@ -80,7 +80,7 @@
         
         
         <div class="col s8 pr0 pl7">
-            <div class="pie-chart">
+            <div class="pie-chart" *ngIf="dataSource">
                 <div class="chart-header">
                     <p> Last 15 Day's Coupon Scanned and Complaints</p>
                 </div>
@@ -120,7 +120,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <div class="table-body">
+                                <div class="table-body" *ngIf="store">
                                     <table>
                                         <tr *ngFor="let data of store.state_wise_scanned_coupon">
                                             <td class="text-center">{{data.coupon_code +'-'+ (data.scan_date | date: 'dd MMM yyyy') }}</td>
@@ -160,7 +160,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <div class="table-body">
+                                <div class="table-body" *ngIf="store">
                                     <table>
                                         <tr *ngFor="let data of store.super">
                                             <td>{{data.first_name | titlecase}}</td>
@@ -178,7 +178,7 @@
         </div>
         
         
-        <div class="col s4 pr0 pl7">
+        <div class="col s4 pr0 pl7" *ngIf="complaint">
             <div class="pie-chart">
                 <div class="chart-header">
                     <p>State Wise Complaints</p>

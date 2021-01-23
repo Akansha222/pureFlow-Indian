@@ -38,12 +38,16 @@ export class ChangeStatusComponent implements OnInit {
     {
       this.savingData = true;
       this.db.post_rqst( { 'status' : this.offer ,'id': this.data.id }, 'offer/redeemStatus')
-      .subscribe( d => {
+      .subscribe( result => {
         this.savingData = false;
         this.dialog.success( 'Status successfully Change');
+        console.log( "inside result" );
         this.dialogRef.close(true);
         //console.log( d );
       });
+      console.log( "outside result" );
+      this.dialogRef.close(true);
+
     }
 
     onNoClick(): void{

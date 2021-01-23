@@ -24,7 +24,9 @@ export class AuthGuardLog implements CanActivate {
 
             var home_page = '';
             if(   this.users.access_level == 1  ){
-                  home_page = '/dashboard';
+                  // home_page = '/dashboard';
+                  home_page = '/offer-list';
+
 
                            
             }else{
