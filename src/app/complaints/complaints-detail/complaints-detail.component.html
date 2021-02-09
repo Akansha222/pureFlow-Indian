@@ -268,12 +268,22 @@
                             
                           </li>
 
-                          <li *ngIf="getData.status == 'Closed'">
+                          <li *ngIf="getData.status == 'Closed'&& getData.plumber_payment ==0 ||getData.plumber_payment ==''||getData.plumber_payment ==null">
                           
                             <h3>Add Plumber Payment
                               
                               <button  (click)="addPayment(getData.assigned_plumber,getData.id)">Add</button>
                             </h3>
+                            
+                          </li>
+
+                          <li *ngIf="getData.status == 'Closed'&&  getData.plumber_payment">
+                          
+                            <h3> Plumber Paid  Amount
+                              
+                            
+                            </h3>
+                            <p>{{getData.plumber_payment}}</p>
                             
                           </li>
                       </ul>
