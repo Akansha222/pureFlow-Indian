@@ -170,7 +170,7 @@ export class ComplaintsAddComponent implements OnInit {
       {
         this.db.post_rqst(  {'mobile_no' : this.complaintfrom.mobile_no }, 'karigar/checkCustomerNumExits')
         .subscribe(d => {
-          ////console.log(d);
+          console.log(d);
           this.savingData = false;
           
           
@@ -303,7 +303,7 @@ console.log( this.media );
       console.log(this.formData);
       this.db.fileData( this.formData  , 'app_karigar/addComplaintWeb')
       .subscribe( d => {
-        this.router.navigate(['complaints-list']);
+        this.router.navigate(['complaints-list/service']);
         this.dialog.success( 'Complaints has been successfully added');
         this.savingData = false;
         this.loading_list = false;
