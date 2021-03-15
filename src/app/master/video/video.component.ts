@@ -57,7 +57,7 @@ export class VideoComponent implements OnInit {
     this.db.post_rqst( { 'video' : this.vedioForm }, 'master/videoAdd')
     .subscribe( d => {
       this.savingData = false;
-      //console.log( d );
+      console.log( d );
       if(d['status'] == 'EXIST' ){
         this.dialog.error( 'This Vedio Already exists');
         return;
