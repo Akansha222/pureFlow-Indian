@@ -48,7 +48,7 @@ export class ComplaintsEditGalleryComponent implements OnInit {
         var name = event.target.files[i].name;
 
 
-        var reader = new FileReader();
+         var reader = new FileReader();
 
         reader.readAsDataURL(event.target.files[i]); // read file as data url
   
